@@ -251,13 +251,53 @@
                                 </select>
                             </div>
                             <div class="col-12 col-md-3">
-                                <button type="submit" class="form-control btn roberto-btn w-100"><b>Check Availability<b></button>
+                                <button data-toggle="modal" data-target="#exampleModal" type="button" class="form-control btn roberto-btn w-100"><b>Check Availability<b></button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
+<!--Modal -->
+
+    <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Customer Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="senders-name" class="col-form-label">Name</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                  </div>
+                  <div class="form-group">
+                    <label for="senders-email" class="col-form-label">Email</label>
+                    <input type="email" class="form-control" id="senders-email">
+                  </div>
+                  <div class="form-group">
+                    <label for="senders-contact" class="col-form-label">Contact</label>
+                    <input type="contact" class="form-control" id="senders-contact">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Message:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeM()" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+              </div>
+            </div>
+          </div>
+    </div>
+
 
         <div class="container mt-100">
             <div class="row align-items-center">
@@ -318,11 +358,6 @@
                             <h5>Acquarium</h5>
                         </div>
 
-                        <!-- Single Service Area -->
-                      <!--   <div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="500ms">
-                            <img src="img/core-img/icon-3.png" alt="">
-                            <h5>Free Wifi</h5>
-                        </div> -->
 
                         <!-- Single Service Area -->
                         <div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="700ms">
@@ -660,6 +695,18 @@
                 </div>
             </div>
         </div>
+
+<script type="text/javascript">
+     $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+</script>
 
         <!-- Copywrite Area -->
         <div class="container">
